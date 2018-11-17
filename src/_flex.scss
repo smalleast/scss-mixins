@@ -1,0 +1,40 @@
+/* flex start */
+
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+@mixin generator-flex($inList, $layout:'x', $inPrefix:'flex-') {
+  @each $name,
+  $var in $inList {
+    .#{$inPrefix}#{$layout}#{$name} {
+      @extend .flex;
+      @if $layout=='x' {
+        justify-content: #{$var};
+        -webkit-justify-content: #{$var};
+      }
+      @else {
+        align-items: #{$var};
+        -webkit-align-items:#{$var};
+      }
+    }
+  }
+}
+
+@mixin generator-flex-all($inList) {
+  @include generator-flex($inList, 'x');
+  @include generator-flex($inList, 'y');
+}
+
+@mixin generator-flex-number($inList, $inPrefix:'flex') {
+  .#{$inPrefix} {
+    @each $var in $inList {
+      &#{$var} {
+        flex:#{$var};
+      }
+    }
+  }
+}
+
+/* flex end */

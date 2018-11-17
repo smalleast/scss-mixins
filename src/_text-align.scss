@@ -1,0 +1,15 @@
+/* text-align start */
+
+@mixin generator-text-align($inList, $inPrefix:'t') {
+  @each $name,
+  $var in $inList {
+    .#{$inPrefix}#{$name} {
+      &,
+      &_>* {
+        text-align: #{$var};
+      }
+    }
+  }
+}
+
+/* text-align end */

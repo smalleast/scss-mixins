@@ -1,0 +1,20 @@
+/* position start */
+
+@mixin generator-position($inList, $inPrefix:'top') {
+  .#{$inPrefix} {
+    @each $var in $inList {
+      &#{$var} {
+        #{$inPrefix}:#{$var}px;
+      }
+    }
+  }
+}
+
+@mixin generator-position-all($inList) {
+  @include generator-position($inList, 'top');
+  @include generator-position($inList, 'right');
+  @include generator-position($inList, 'bottom');
+  @include generator-position($inList, 'left');
+}
+
+/* position end */

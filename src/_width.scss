@@ -1,0 +1,20 @@
+/*width Start*/
+
+@mixin generator-width-wp($inList, $mode:'px', $inPrefix:'wp-') {
+  @each $value in $inList {
+    .#{$inPrefix}#{$value} {
+      @if $mode=='percent' {
+        width: #{$value*10%};
+      }
+      @else {
+        width: #{$value}px;
+      }
+    }
+  }
+}
+
+@mixin generator-width-wp-percent($inList) {
+  @include generator-width-wp($inList, 'percent')
+}
+
+/*width End*/
